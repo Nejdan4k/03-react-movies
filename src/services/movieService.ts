@@ -2,8 +2,7 @@ import axios from "axios";
 import type { Movie } from "../types/movie";
 
 const BASE_URL = "https://api.themoviedb.org/3/search/movie";
-const TOKEN = import.meta.env.VITE_TMDB_TOKEN;
-
+const TOKEN = import.meta.env.VITE_TMDB_API_KEY; 
 interface MovieSearchResponse {
   page: number;
   results: Movie[];
@@ -21,6 +20,7 @@ export const fetchMovies = async (query: string): Promise<Movie[]> => {
     },
     headers: {
       Authorization: `Bearer ${TOKEN}`,
+      "Content-Type": "application/json;charset=utf-8",
     },
   };
 
